@@ -1,153 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Vídeo</title>
 
-<title>Bitter-TV</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-<style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background: #111;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background: #000;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #333;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 30px;
-}
-
-header p {
-    margin: 6px 0 0;
-    color: #aaa;
-}
-
-.container {
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.video-card {
-    background: #1c1c1c;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.video-card:active {
-    transform: scale(0.98);
-}
-
-.video-card video {
-    width: 100%;
-    display: block;
-}
-
-.video-title {
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.player {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
-
-.player video {
-    width: 100%;
-    max-width: 1000px;
-    max-height: 85vh;
-}
-
-.close {
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    font-size: 35px;
-    color: white;
-    cursor: pointer;
-}
-</style>
+    video {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>📺 BITTER-TV</h1>
-    <p>Entretenimento ao seu alcance</p>
-</header>
-
-<div class="container">
-
-    <div class="video-card" onclick="abrirVideo()">
-        <video
-            video.mp4"
-            muted
-            playsinline>
-        </video>
-
-        <div class="video-title">
-            🎬 Vídeo 1
-        </div>
-    </div>
-
-</div>
-
-<div class="player" id="player">
-
-    <div class="close" onclick="fecharVideo()">×</div>
-
-    <video id="videoPlayer" controls playsinline></video>
-
-</div>
-
-<script>
-
-function abrirVideo() {
-
-    const player = document.getElementById("player");
-    const video = document.getElementById("videoPlayer");
-
-    video.src = "vídeo.mp4";
-
-    player.style.display = "flex";
-
-    video.play();
-}
-
-function fecharVideo() {
-
-    const player = document.getElementById("player");
-    const video = document.getElementById("videoPlayer");
-
-    video.pause();
-    player.style.display = "none";
-}
-
-</script>
+  <video controls playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
 
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bitter-TV</title>
 
 <style>
@@ -12,81 +13,80 @@
 
 body {
     margin: 0;
-    background: #0b0b0b;
+    background: #111;
     color: white;
     font-family: Arial, sans-serif;
 }
 
 header {
+    background: #000;
     padding: 20px;
-    background: #111;
     text-align: center;
-    border-bottom: 1px solid #222;
+    border-bottom: 2px solid #333;
 }
 
 header h1 {
     margin: 0;
-    font-size: 26px;
+    font-size: 30px;
 }
 
 header p {
-    color: #999;
     margin: 6px 0 0;
+    color: #aaa;
 }
 
 .container {
-    padding: 18px;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-.videos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
 }
 
 .video-card {
-    background: #171717;
+    background: #1c1c1c;
     border-radius: 12px;
     overflow: hidden;
+    margin-bottom: 20px;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.video-card:active {
+    transform: scale(0.98);
 }
 
 .video-card video {
     width: 100%;
     display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
 }
 
 .video-title {
-    padding: 12px;
-    font-size: 15px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .player {
     display: none;
     position: fixed;
     inset: 0;
-    background: #000;
-    z-index: 10;
+    background: rgba(0,0,0,0.95);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
     padding: 15px;
 }
 
 .player video {
     width: 100%;
-    max-height: 80vh;
-    margin-top: 60px;
+    max-width: 1000px;
+    max-height: 85vh;
 }
 
 .close {
-    position: absolute;
+    position: fixed;
     top: 15px;
-    right: 18px;
-    font-size: 32px;
+    right: 20px;
+    font-size: 35px;
     color: white;
     cursor: pointer;
 }
@@ -96,63 +96,57 @@ h2 {
 <body>
 
 <header>
-    <h1>🎬 Bitter-TV</h1>
-    <p>Assista aos teus vídeos offline</p>
+    <h1>📺 BITTER-TV</h1>
+    <p>Entretenimento ao seu alcance</p>
 </header>
 
 <div class="container">
-    <h2>Vídeos</h2>
 
-    <div class="videos">
+    <div class="video-card" onclick="abrirVideo()">
+        <video
+            src="80c420a47a827f911957381a5623bcc6_1787524568936~2.mp4"
+            muted
+            playsinline>
+        </video>
 
-        <div class="video-card" onclick="abrirVideo('80c420a47a827f911957381a5623bcc6_1787524568936~2.mp4')">
-    <video src="80c420a47a827f911957381a5623bcc6_1787524568936~2.mp4" muted>
-    <div class="video-title">Meu vídeo</div>
-</div>
-
-        <div class="video-card" onclick="abrirVideo('videos/video2.mp4')">
-            <video src="videos/video2.mp4" muted></video>
-            <div class="video-title">Vídeo 2</div>
+        <div class="video-title">
+            🎬 Vídeo 1
         </div>
-
-        <div class="video-card" onclick="abrirVideo('videos/video3.mp4')">
-            <video src="videos/video3.mp4" muted></video>
-            <div class="video-title">Vídeo 3</div>
-        </div>
-
-        <div class="video-card" onclick="abrirVideo('videos/video4.mp4')">
-            <video src="videos/video4.mp4" muted></video>
-            <div class="video-title">Vídeo 4</div>
-        </div>
-
     </div>
+
 </div>
 
 <div class="player" id="player">
-    <div class="close" onclick="fecharVideo()">✕</div>
 
-    <video id="videoPlayer" controls autoplay>
-    </video>
+    <div class="close" onclick="fecharVideo()">×</div>
+
+    <video id="videoPlayer" controls playsinline></video>
+
 </div>
 
 <script>
-function abrirVideo(video) {
-    const player = document.getElementById("player");
-    const videoPlayer = document.getElementById("videoPlayer");
 
-    videoPlayer.src = video;
-    player.style.display = "block";
-    videoPlayer.play();
+function abrirVideo() {
+
+    const player = document.getElementById("player");
+    const video = document.getElementById("videoPlayer");
+
+    video.src = "80c420a47a827f911957381a5623bcc6_1787524568936~2.mp4";
+
+    player.style.display = "flex";
+
+    video.play();
 }
 
 function fecharVideo() {
-    const player = document.getElementById("player");
-    const videoPlayer = document.getElementById("videoPlayer");
 
-    videoPlayer.pause();
-    videoPlayer.src = "";
+    const player = document.getElementById("player");
+    const video = document.getElementById("videoPlayer");
+
+    video.pause();
     player.style.display = "none";
 }
+
 </script>
 
 </body>

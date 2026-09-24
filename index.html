@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitter-TV</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0b0b0b;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 20px;
+    background: #111;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+header p {
+    color: #999;
+    margin: 6px 0 0;
+}
+
+.container {
+    padding: 18px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.video-card {
+    background: #171717;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-card video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.video-title {
+    padding: 12px;
+    font-size: 15px;
+}
+
+.player {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 10;
+    padding: 15px;
+}
+
+.player video {
+    width: 100%;
+    max-height: 80vh;
+    margin-top: 60px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎬 Bitter-TV</h1>
+    <p>Assista aos teus vídeos offline</p>
+</header>
+
+<div class="container">
+    <h2>Vídeos</h2>
+
+    <div class="videos">
+
+        <div class="video-card" onclick="abrirVideo('videos/video1.mp4')">
+            <video src="videos/video1.mp4" muted></video>
+            <div class="video-title">Vídeo 1</div>
+        </div>
+
+        <div class="video-card" onclick="abrirVideo('videos/video2.mp4')">
+            <video src="videos/video2.mp4" muted></video>
+            <div class="video-title">Vídeo 2</div>
+        </div>
+
+        <div class="video-card" onclick="abrirVideo('videos/video3.mp4')">
+            <video src="videos/video3.mp4" muted></video>
+            <div class="video-title">Vídeo 3</div>
+        </div>
+
+        <div class="video-card" onclick="abrirVideo('videos/video4.mp4')">
+            <video src="videos/video4.mp4" muted></video>
+            <div class="video-title">Vídeo 4</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="player" id="player">
+    <div class="close" onclick="fecharVideo()">✕</div>
+
+    <video id="videoPlayer" controls autoplay>
+    </video>
+</div>
+
+<script>
+function abrirVideo(video) {
+    const player = document.getElementById("player");
+    const videoPlayer = document.getElementById("videoPlayer");
+
+    videoPlayer.src = video;
+    player.style.display = "block";
+    videoPlayer.play();
+}
+
+function fecharVideo() {
+    const player = document.getElementById("player");
+    const videoPlayer = document.getElementById("videoPlayer");
+
+    videoPlayer.pause();
+    videoPlayer.src = "";
+    player.style.display = "none";
+}
+</script>
+
+</body>
+</html>

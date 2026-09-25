@@ -1,2 +1,1 @@
-# Bitter-TV
-Bitter TV app
+Bitter Share 
